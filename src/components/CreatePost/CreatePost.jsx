@@ -1,5 +1,3 @@
-import React from "react";
-import ImageUpload from "../ImageUpload/ImageUpload";
 import "./CreatePost.css";
 
 function CreatePost({
@@ -8,9 +6,7 @@ function CreatePost({
   handleSubmit,
   editingPost,
   cancelEdit,
-  previewImage,
-  handleImageChange,
-  removeImage,
+  children,
 }) {
   return (
     <div className="create-post">
@@ -18,27 +14,18 @@ function CreatePost({
         <textarea
           value={newPost}
           onChange={(e) => setNewPost(e.target.value)}
-          placeholder={
-            editingPost ? "Edit your post..." : "What's on your mind?"
-          }
-          rows="4"
+          placeholder="What's on your mind?"
         />
-        <ImageUpload
-          handleImageChange={handleImageChange}
-          previewImage={previewImage}
-          removeImage={removeImage}
-        />
+        {children} {/* This will render the ImageUpload component */}
         <div className="form-buttons">
+          <button type="submit">
+            {editingPost ? "Update Post" : "Create Post"}
+          </button>
           {editingPost && (
-            <button
-              type="button"
-              onClick={cancelEdit}
-              className="cancel-button"
-            >
+            <button type="button" className="secondary" onClick={cancelEdit}>
               Cancel
             </button>
           )}
-          <button type="submit">{editingPost ? "Save Changes" : "Post"}</button>
         </div>
       </form>
     </div>

@@ -1,66 +1,72 @@
-import React from "react";
-import Comments from "../Comments/Comments";
+import { FaEdit, FaTrash } from "react-icons/fa"; // Import icons
 import "./Post.css";
 
-function Post({
-  post,
-  user,
-  handleEdit,
-  handleDelete,
-  handleLike,
-  comments,
-  commentingOn,
-  handleComment,
-  submitComment,
-  newComment,
-  setNewComment,
-}) {
+function Post({ post, user, handleEdit, handleDelete, handleLike }) {
+  const isAuthor = post.user_id === user.id;
+
+  const handleDeleteClick = (e) => {
+    e.stopPropagation(); // Prevent event bubbling
+    handleDelete(post.id);
+  };
+
+  const handleEditClick = (e) => {
+    e.stopPropagation(); // Prevent event bubbling
+    handleEdit(post);
+  };
+
   return (
     <div className="post">
       <div className="post-header">
-        <img src={post.avatar} alt={post.author} className="avatar-small" />
-        <div className="post-info">
-          <span className="post-author">{post.author}</span>
-          <span className="post-time">
-            {new Date(post.timestamp).toLocaleString()}
-          </span>
+        <div className="post-header-left">
+          <img
+            src={
+              // post.avatar_url ||
+              "https://images.vexels.com/media/users/3/147101/isolated/preview/b4a49d4b864c74bb73de63f080ad7930-instagram-profile-button.png"
+            }
+            alt={post.author_name}
+            className="avatar"
+          />
+          <div className="post-header-info">
+            <h3>{post.author_name}</h3>
+            <span className="post-date">
+              {new Date(post.created_at).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}
+            </span>
+          </div>
         </div>
-        {post.author === user.name && (
-          <div className="post-controls">
-            <button onClick={() => handleEdit(post)} className="edit-button">
-              ✏️
+        {isAuthor && (
+          <div className="post-actions">
+            <button
+              className="action-button edit"
+              onClick={handleEditClick}
+              title="Edit post"
+            >
+              <FaEdit />
             </button>
             <button
-              onClick={() => handleDelete(post.id)}
-              className="delete-button"
+              className="action-button delete"
+              onClick={handleDeleteClick}
+              title="Delete post"
             >
-              🗑️
+              <FaTrash />
             </button>
           </div>
         )}
       </div>
-      <div className="post-content">{post.content}</div>
-      {post.image && (
-        <div className="post-image">
-          <img src={post.image} alt="Post content" />
-        </div>
-      )}
-      <div className="post-actions">
-        <button onClick={() => handleLike(post.id)} className="like-button">
-          ❤️ {post.likes}
-        </button>
-        <button className="comment-button">💬 Comment</button>
-        <button className="share-button">↗️ Share</button>
+      <div className="post-content">
+        <p>{post.content}</p>
       </div>
-      <Comments
-        postId={post.id}
-        comments={comments}
-        commentingOn={commentingOn}
-        handleComment={handleComment}
-        submitComment={submitComment}
-        newComment={newComment}
-        setNewComment={setNewComment}
-      />
+      <div className="post-footer">
+        <button
+          className={`like-button ${post.liked ? "liked" : ""}`}
+          onClick={() => handleLike(post.id)}
+        >
+          Like ({post.likes || 0})
+        </button>
+      </div>
     </div>
   );
 }

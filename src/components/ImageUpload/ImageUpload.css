@@ -1,51 +1,54 @@
 .image-upload {
-    margin-top: 10px;
+    margin: 15px 0;
   }
   
-  .upload-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
+  .hidden {
+    display: none;
+  }
+  
+  .upload-button {
+    display: inline-block;
     padding: 8px 16px;
-    background-color: #333;
-    border-radius: 20px;
+    background-color: #282828;
+    color: #61dafb;
+    border: 1px solid #61dafb;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.2s ease;
   }
   
-  .upload-label:hover {
-    background-color: #404040;
+  .upload-button:hover {
+    background-color: #61dafb;
+    color: #1a1a1a;
   }
   
   .image-preview {
+    margin-top: 15px;
     position: relative;
-    margin-top: 10px;
+    display: inline-block;
   }
   
   .image-preview img {
     max-width: 100%;
     max-height: 300px;
     border-radius: 8px;
+    border: 1px solid #404040;
   }
   
   .remove-image {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    background-color: rgba(26, 26, 26, 0.8);
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+    padding: 5px 10px;
+    border-radius: 4px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
   }
   
   .remove-image:hover {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #ff6b6b;
+    color: #1a1a1a;
   }
   

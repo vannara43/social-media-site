@@ -15,3 +15,45 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.post-container {
+  background-color: #282828;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #404040;
+}
+
+/* Loading and Error states */
+.loading, .error {
+  text-align: center;
+  padding: 20px;
+  color: #61dafb;
+}
+
+.error {
+  color: #ff6b6b;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 24px;
+  border-radius: 6px;
+  color: white;
+  z-index: 1000;
+  animation: slideUp 0.3s ease-out;
+}
+
+.toast.success {
+  background-color: #4caf50;
+}
+
+.toast.error {
+  background-color: #f44336;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

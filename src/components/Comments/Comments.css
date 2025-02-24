@@ -1,62 +1,100 @@
-.post-comments {
-  margin-top: 15px;
+.comments-section {
+  padding: 15px 20px;
   border-top: 1px solid #404040;
-  padding-top: 15px;
-}
-
-.comment {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-  padding: 10px;
-  background-color: #333;
-  border-radius: 8px;
-}
-
-.comment-content {
-  flex: 1;
-}
-
-.comment-header {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 5px;
-}
-
-.comment-author {
-  font-weight: bold;
-  color: #61dafb;
-}
-
-.comment-time {
-  color: #888;
-  font-size: 0.8rem;
 }
 
 .comment-form {
   display: flex;
   gap: 10px;
-  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
-.comment-form input {
+.comment-input {
   flex: 1;
-  padding: 8px;
+  padding: 8px 12px;
   border-radius: 20px;
   border: 1px solid #404040;
-  background-color: #333;
+  background-color: #1a1a1a;
   color: white;
+  font-size: 14px;
+  transition: all 0.2s ease;
 }
 
-.comment-form button {
+.comment-input:focus {
+  outline: none;
+  border-color: #61dafb;
+}
+
+.comment-submit {
   padding: 8px 16px;
   border-radius: 20px;
-  border: none;
-  background-color: #61dafb;
-  color: #282828;
+  background-color: transparent;
+  color: #61dafb;
+  border: 1px solid #61dafb;
   cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
 }
 
-.comment-form button:hover {
-  background-color: #4fa8d1;
+.comment-submit:hover {
+  background-color: #61dafb;
+  color: #1a1a1a;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comment {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.comment-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #61dafb;
+}
+
+.comment-content {
+  flex: 1;
+  background-color: #1a1a1a;
+  padding: 10px 12px;
+  border-radius: 12px;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.comment-author {
+  font-weight: 600;
+  color: #61dafb;
+  font-size: 14px;
+}
+
+.comment-date {
+  color: #888;
+  font-size: 12px;
+}
+
+.comment-content p {
+  margin: 0;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.no-comments {
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  margin: 20px 0;
 }
